@@ -27,3 +27,20 @@ Wireframe:
   - The wireframe captures the key features (Add, Edit, Delete, Mark as Done).
   - Approximate sizes and positions are used (e.g., header at top, input below, tasks in rows).
   - Deviations from the plan: Tasks are not grouped into single 350x40px rectangles; elements (checkbox, text, buttons) are separate boxes. Exact dimensions (350x50px header, 250x30px + 80x30px input, 350x40px tasks at 160px, 210px, 260px) and precise positioning can be refined later in Excalidraw if needed.
+ 
+  - # Todo App
+
+A simple to-do list application built with React for the frontend, Node.js/Express for the backend, and MongoDB for data storage. This project uses Tailwind CSS for styling and includes a client-server architecture.
+
+## Prerequisites
+
+- Node.js (v14 or later)
+- npm (v6 or later)
+- MongoDB (local or remote instance)
+
+## Installation
+
+### Backend Setup
+1. Navigate to the `server` directory:
+   ```bash
+   cd server
