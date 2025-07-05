@@ -1,0 +1,51 @@
+# To-Do List Web App
+
+## Step 1: Plan the Project
+
+### Project Features
+- Add a new task using an input field and "Add" button.
+- Display all tasks in a list with their completion status.
+- Edit a task’s text by clicking an "Edit" button and saving changes.
+- Delete a task by clicking a "Delete" button.
+- Mark a task as completed or not using a checkbox.
+
+### Tech Stack
+- **Frontend**: React.js, Axios, Tailwind CSS
+- **Backend**: Node.js, Express, MongoDB, Mongoose
+- **Tools**: Git/GitHub, Thunder Client (VS Code extension), Vercel (frontend), Render (backend)
+
+### Wireframe
+- **Description**: A hand-drawn sketch capturing the UI layout, to be refined in Excalidraw if needed.
+- **Layout**:
+  - **Header**: A rectangle labeled "To-Do List" at the top.
+  - **Input Form**: A horizontal rectangle (input field) next to a smaller rectangle labeled "Add" below the header.
+  - **Task List**: Three rows of tasks, each with:
+    - A square checkbox ("x" in Task2 indicates completion).
+    - Task text labeled "Task1", "Task2", and "Task3".
+    - Two smaller rectangles labeled "Edit" and "Delete".
+  - **Overall**: Enclosed in a larger border, with elements spaced out and aligned vertically.
+- **Notes**:
+  - Captures key features (Add, Edit, Delete, Mark as Done).
+  - Tasks are separate elements (checkbox, text, buttons) rather than single 350x40px rectangles.
+  - Approximate sizes (e.g., 350x50px header, 250x30px input + 80x30px button, tasks at 160px, 210px, 260px) and positions can be refined later.
+
+### Backend Setup and Testing
+1. Navigate to `server/` in VS Code PowerShell terminal.
+2. Run `npm install` to install dependencies.
+3. Create a `.env` file with `MONGODB_URI` and `PORT`.
+4. Run `node server.js` to start the server.
+5. Test APIs using Thunder Client (VS Code extension):
+   - **GET /api/todos**: Retrieve all todos.
+   - **POST /api/todos**: Create a todo.
+   - **PUT /api/todos/:id**: Update a todo.
+   - **DELETE /api/todos/:id**: Delete a todo.
+
+### Next Steps
+- Develop the frontend using React, Axios, and Tailwind CSS.
+- Deploy the backend to Render and frontend to Vercel.
+- Create a digital wireframe in Excalidraw (optional).
+- Record a demo video showcasing API functionality.
+
+## Deployment Links
+- Backend: (Add Render URL after deployment)
+- Frontend: (Add Vercel URL after deployment)
