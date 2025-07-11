@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from 'react';
 
-function Signup({ setIsLoggedIn, setUser }) {
+function Signup({ setIsLoggedIn, setUser, setShowSignup, users, setUsers }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSignup = () => {
+    setError(''); // Clear previous error
     if (username.trim() && password.trim()) {
-      setUser({ username: username.trim() });
-      setIsLoggedIn(true);
+      if (users.some(u => u.username === username)) {
+        setError('Username already exists. Choose a different one.');
+      } else {
+        const newUser = { username: username.trim(), password: password.trim() };
+        setUsers([...users, newUser]);
+        setUser(newUser);
+        setIsLoggedIn(true);
+      }
     } else {
-      alert('Please enter both username and password');
+      setError('Please enter both username and password');
     }
   };
 
@@ -29,11 +37,12 @@ function Signup({ setIsLoggedIn, setUser }) {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundAttachment: 'fixed',
-        backgroundColor: '#f0f0f0', // Fallback color only
+        backgroundColor: '#f0f0f0',
       }}
     >
       <div className="p-6 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">Signup</h2>
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         <input
           type="text"
           className="border-2 border-gray-300 p-2 w-1/4 mx-auto block mb-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
@@ -56,6 +65,13 @@ function Signup({ setIsLoggedIn, setUser }) {
           onClick={handleSignup}
         >
           Signup
+        </button>
+        <button
+          className="bg-green-600 text-white p-2 w-1/4 mx-auto block mt-4 rounded-lg hover:bg-green-700 transition duration-200"
+          style={{ minHeight: '50px' }}
+          onClick={() => setShowSignup(false)}
+        >
+          Login
         </button>
       </div>
     </div>

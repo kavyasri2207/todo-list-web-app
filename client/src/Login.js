@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
-function Login({ setIsLoggedIn, setUser }) {
+function Login({ setIsLoggedIn, setUser, setShowSignup, users }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleLogin = () => {
-    if (username.trim() && password.trim()) {
-      setUser({ username: username.trim() });
+    setError(''); // Clear previous error
+    const user = users.find(u => u.username === username && u.password === password);
+    if (user) {
+      setUser(user);
       setIsLoggedIn(true);
     } else {
-      alert('Please enter both username and password');
+      setError('Invalid username or password. Please signup first.');
     }
   };
 
@@ -29,11 +32,12 @@ function Login({ setIsLoggedIn, setUser }) {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundAttachment: 'fixed',
-        backgroundColor: '#f0f0f0', // Fallback color only
+        backgroundColor: '#f0f0f0',
       }}
     >
       <div className="p-6 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">Login</h2>
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         <input
           type="text"
           className="border-2 border-gray-300 p-2 w-1/4 mx-auto block mb-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
@@ -56,6 +60,13 @@ function Login({ setIsLoggedIn, setUser }) {
           onClick={handleLogin}
         >
           Login
+        </button>
+        <button
+          className="bg-green-600 text-white p-2 w-1/4 mx-auto block mt-4 rounded-lg hover:bg-green-700 transition duration-200"
+          style={{ minHeight: '50px' }}
+          onClick={() => setShowSignup(true)}
+        >
+          Signup
         </button>
       </div>
     </div>
