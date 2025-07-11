@@ -1,67 +1,64 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
 
-function Login({ setIsLoggedIn }) {
+function Login({ setIsLoggedIn, setUser }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async () => {
-    try {
-      const res = await axios.post('http://localhost:5000/login', { username, password });
-      alert(res.data);
-      if (res.data === 'Login successful') setIsLoggedIn(true);
-    } catch (error) {
-      alert('Login failed: ' + (error.response?.data || error.message));
+  const handleLogin = () => {
+    if (username.trim() && password.trim()) {
+      setUser({ username: username.trim() });
+      setIsLoggedIn(true);
+    } else {
+      alert('Please enter both username and password');
     }
   };
 
+  useEffect(() => {
+    const img = new Image();
+    img.src = '/login-bg.jpg';
+    img.onload = () => console.log('Background image /login-bg.jpg loaded successfully for Login');
+    img.onerror = () => console.error('Error loading background image /login-bg.jpg for Login. Check file or path.');
+  }, []);
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="flex items-center justify-center min-h-screen"
+    <div
+      className="min-h-screen p-4 flex items-center justify-center"
       style={{
         backgroundImage: `url(/login-bg.jpg)`,
-        backgroundSize: '100% 100%', // Stretch to fit screen
+        backgroundSize: '100% 100%',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundAttachment: 'fixed',
+        backgroundColor: '#f0f0f0', // Fallback color only
       }}
     >
-      <motion.div
-        initial={{ scale: 0.95 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.4 }}
-        className="bg-white bg-opacity-90 p-4 rounded-xl shadow-2xl w-full max-w-md text-center"
-      >
-        <h2 className="text-4xl font-bold mb-4 text-gray-900">Login</h2>
+      <div className="p-6 rounded-lg shadow-lg w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">Login</h2>
         <input
-          className="border-2 border-gray-200 p-3 mb-3 w-1/2 mx-auto block rounded-lg focus:outline-none focus:ring-4 focus:ring-indigo-300 text-lg placeholder-gray-500"
-          style={{ minHeight: '40px' }}
+          type="text"
+          className="border-2 border-gray-300 p-2 w-1/4 mx-auto block mb-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
+          style={{ minHeight: '50px' }}
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
+          placeholder="Enter username"
         />
         <input
-          className="border-2 border-gray-200 p-3 mb-4 w-1/2 mx-auto block rounded-lg focus:outline-none focus:ring-4 focus:ring-indigo-300 text-lg placeholder-gray-500"
-          style={{ minHeight: '40px' }}
           type="password"
+          className="border-2 border-gray-300 p-2 w-1/4 mx-auto block mb-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
+          style={{ minHeight: '50px' }}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          placeholder="Enter password"
         />
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="bg-indigo-600 text-white p-2 w-1/2 mx-auto block rounded-lg hover:bg-indigo-700 transition duration-300 text-xl"
+        <button
+          className="bg-blue-600 text-white p-2 w-1/4 mx-auto block rounded-lg hover:bg-blue-700 transition duration-200"
+          style={{ minHeight: '50px' }}
           onClick={handleLogin}
         >
           Login
-        </motion.button>
-      </motion.div>
-    </motion.div>
+        </button>
+      </div>
+    </div>
   );
 }
 

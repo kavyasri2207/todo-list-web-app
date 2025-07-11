@@ -1,27 +1,18 @@
 import React, { useState } from 'react';
-import Login from './Login';
-import Signup from './Signup';
 import TodoList from './components/TodoList';
+import Login from './Login'; // Updated path
 
 function App() {
-  const [page, setPage] = useState('login');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-400 to-purple-500">
-      {!isLoggedIn ? (
-        <>
-          {page === 'login' ? <Login setIsLoggedIn={setIsLoggedIn} /> : <Signup />}
-          <div className="text-center mt-4">
-            <button
-              className="bg-gray-500 text-white p-2 rounded mx-2"
-              onClick={() => setPage(page === 'login' ? 'signup' : 'login')}
-            >
-              Switch to {page === 'login' ? 'Signup' : 'Login'}
-            </button>
-          </div>
-        </>
-      ) : <TodoList setIsLoggedIn={setIsLoggedIn} />}
+    <div className="App">
+      {isLoggedIn ? (
+        <TodoList setIsLoggedIn={setIsLoggedIn} user={user} />
+      ) : (
+        <Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
+      )}
     </div>
   );
 }
