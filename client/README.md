@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Todo App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple to-do list application with user authentication and task management, built with a client-server architecture. The frontend is developed using React.js, styled with Tailwind CSS, and the backend uses Node.js, Express, and MongoDB for data storage.
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+- Node.js (v14 or later)
+- npm (v6 or later)
+- MongoDB (local or remote instance)
+- Git (for version control)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **User Authentication**:
+  - Login and signup pages with centered layouts.
+  - Background image (`login-bg.jpg`) for login and signup with no overlay for clear visibility.
+  - Input fields for username and password (25% width, 50px height).
+- **Task Management**:
+  - Add a new task using an input field and "Add" button.
+  - Display all tasks in a list with completion status (checkbox).
+  - Edit a task’s text by clicking an "Edit" button and saving changes.
+  - Delete a task by clicking a "Delete" button.
+  - Mark a task as completed or not using a checkbox.
+  - Task priorities (High, Medium, Low) with color coding.
+  - Due dates for tasks with overdue status indication.
+- **Additional Functionality**:
+  - User-specific task storage using `localStorage` (client-side).
+  - Animations and hover effects for a better user experience.
+  - Responsive design across devices.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+- **Frontend**: React.js, Axios, Tailwind CSS
+- **Backend**: Node.js, Express, MongoDB, Mongoose
+- **Tools**: Git/GitHub, Postman, Vercel, Render
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Wireframe
 
-### `npm run build`
+- **Hand-Drawn Sketch**: Created for initial planning.
+- **Layout Description**:
+  - **Header**: A rectangle labeled "To-Do List" at the top.
+  - **Input Form**: A horizontal rectangle (input field) next to a smaller rectangle labeled "Add" below the header.
+  - **Task List**: Three rows of tasks, each with:
+    - A square (checkbox), with an "x" in the second task (Task2) indicating completion.
+    - Task text labeled "Task1", "Task2", and "Task3" respectively.
+    - Two smaller rectangles labeled "Edit" and "Delete" for each task.
+  - **Overall**: Enclosed in a larger border, with elements spaced out and aligned vertically.
+- **Notes**:
+  - Captures key features (Add, Edit, Delete, Mark as Done).
+  - Approximate sizes and positions (e.g., header at top, input below, tasks in rows).
+  - Deviations: Tasks are not grouped into single 350x40px rectangles; elements (checkbox, text, buttons) are separate boxes. Exact dimensions can be refined later in Excalidraw if needed.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Backend Setup
+1. Navigate to the `server` directory:
+   ```bash
+   cd server
